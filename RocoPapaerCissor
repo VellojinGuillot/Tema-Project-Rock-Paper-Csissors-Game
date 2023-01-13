@@ -1,7 +1,16 @@
+import random
+
 class RPSGame:
-  def __init__(self, choices, computer):
-        self.choices = choices
-        self.computer = computer
+  def __init__(self):
+        
+
+        self.choices = ["rock", "paper", "scissors"]
+        self.computer = random.choice(self.choices)
+        player_choice = input("Enter a choice between words: rock, paper or scissors ").lower()
+        result = self.play(player_choice)
+        with open("RockPaperCissor.txt", "a") as file:
+            file.write(result + "\n") 
+             
         
   def play(self, player_choice):
     if player_choice not in self.choices:
@@ -14,5 +23,4 @@ class RPSGame:
       return "You win!"
     elif player_choice == "paper" and self.computer == "rock":
       return "You win!"
-      
-      
+
